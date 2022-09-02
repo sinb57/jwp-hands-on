@@ -20,6 +20,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-webflux:2.7.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.2'
+    testImplementation("io.netty:netty-resolver-dns-native-macos:4.1.75.Final:osx-aarch_64")
 }
 
 test {
