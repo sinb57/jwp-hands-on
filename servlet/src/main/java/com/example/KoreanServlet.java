@@ -12,6 +12,7 @@ import java.io.IOException;
 @WebServlet(name = "koreanServlet", urlPatterns = "/korean")
 public class KoreanServlet extends HttpServlet {
 
+    private static final String CHARACTER_SET = "utf-8";
     public static final String 인코딩 = "인코딩";
 
     @Override
@@ -23,6 +24,7 @@ public class KoreanServlet extends HttpServlet {
     @Override
     protected void service(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         getServletContext().log("service() 호출");
+        response.setCharacterEncoding(CHARACTER_SET);
         response.getWriter().write(인코딩);
     }
 
