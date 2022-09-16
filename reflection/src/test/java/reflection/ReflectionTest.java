@@ -11,9 +11,12 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.PrimitiveIterator;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import javax.lang.model.type.PrimitiveType;
 
 class ReflectionTest {
 
@@ -73,8 +76,10 @@ class ReflectionTest {
     void givenClass_whenInstantiatesObjectsAtRuntime_thenCorrect() throws Exception {
         final Class<?> questionClass = Question.class;
 
-        final Constructor<?> firstConstructor = questionClass.getConstructors()[0];
-        final Constructor<?> secondConstructor = questionClass.getConstructors()[1];
+        final Constructor<?> firstConstructor = questionClass.getConstructor(
+                String.class, String.class, String.class);
+        final Constructor<?> secondConstructor = questionClass.getConstructor(
+                long.class, String.class, String.class, String.class, Date.class, int.class);
 
         final Question firstQuestion = (Question) firstConstructor.newInstance("gugu", "제목1", "내용1");
         final Question secondQuestion = (Question) secondConstructor.newInstance(0, "gugu", "제목2", "내용2", new Date(), 0);
